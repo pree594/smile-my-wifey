@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Haguman ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Trebuchet MS',sans-serif;
+height:100vh;
+overflow:hidden;
+background:linear-gradient(135deg,#ffd6e7,#ffe8cc);
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.container{
+max-width:900px;
+padding:30px;
+}
+
+h1{
+font-size:3rem;
+color:#ff4081;
+margin-bottom:20px;
+}
+
+p{
+font-size:1.4rem;
+line-height:1.8;
+color:#333;
+min-height:120px;
+}
+
+button{
+padding:14px 28px;
+font-size:18px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+margin:10px;
+transition:0.3s;
+}
+
+.next{
+background:#ff4081;
+color:white;
+}
+
+.yes{
+background:#4CAF50;
+color:white;
+}
+
+.no{
+background:#f44336;
+color:white;
+}
+
+.heart{
+position:absolute;
+font-size:25px;
+animation:float 6s linear infinite;
+pointer-events:none;
+}
+
+@keyframes float{
+from{
+transform:translateY(100vh);
+opacity:1;
+}
+to{
+transform:translateY(-100px);
+opacity:0;
+}
+}
+
+.final{
+animation:pop 1s ease;
+}
+
+@keyframes pop{
+0%{transform:scale(0);}
+100%{transform:scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1 id="title"></h1>
+<p id="text"></p>
+<div id="buttons"></div>
+</div>
+
+<script>
+
+const pages=[
+
+{
+title:"😤 Still Mad, Haguman?",
+text:"Just checking before I continue..."
+},
+
+{
+title:"📋 Official Update",
+text:"Your anger has been received, reviewed, documented, and completely ignored. 😌"
+},
+
+{
+title:"❤️ Hey Haguman",
+text:"Just kidding. There may be millions of things to smile about, but you're definitely my favourite one."
+},
+
+{
+text:"If I were a cigarette, people could simply throw me away. Thankfully I'm not. So unfortunately for you, you're stuck with me."
+},
+
+{
+text:"I've wanted to ask you something for a loooooooooooooong time."
+},
+
+{
+title:"💓 Problem",
+text:"And now that I'm finally here... I'm nervous and excited at the same time."
+},
+
+{
+text:"Yesterday, I may or may not have made a very reasonable demand to Haguman..."
+},
+
+{
+text:"Send me nudes ASAP. It remains constant btw. 🔬"
+},
+
+{
+title:"💩 Important Question",
+text:"Did you poop today, Haguman?"
+},
+
+{
+title:"🤔 One Last Question",
+text:"Okay okay... one ACTUAL final question."
+},
+
+{
+title:"🌈 Final Question",
+text:"Are you gay?"
+}
+
+];
+
+let current=0;
+
+const title=document.getElementById("title");
+const text=document.getElementById("text");
+const buttons=document.getElementById("buttons");
+
+function typeWriter(content,element,speed=35){
+
+element.innerHTML="";
+let i=0;
+
+function type(){
+if(i<content.length){
+element.innerHTML+=content.charAt(i);
+i++;
+setTimeout(type,speed);
+}
+}
+type();
+}
+
+function showPage(){
+
+title.innerHTML=pages[current].title;
+
+typeWriter(pages[current].text,text);
+
+buttons.innerHTML="";
+
+if(current===8){
+
+buttons.innerHTML=`
+<button class="yes" onclick="poopYes()">Yes 💩</button>
+<button class="no" onclick="poopNo()">No 😭</button>
+`;
+
+return;
+}
+
+if(current===10){
+
+buttons.innerHTML=`
+<button class="yes" onclick="gayYes()">Yes 🌈</button>
+<button class="no" id="runaway">No 😏</button>
+`;
+
+setTimeout(()=>{
+
+const btn=document.getElementById("runaway");
+
+btn.addEventListener("mouseover",()=>{
+
+btn.style.position="absolute";
+btn.style.left=Math.random()*(window.innerWidth-150)+"px";
+btn.style.top=Math.random()*(window.innerHeight-100)+"px";
+
+});
+
+},100);
+
+return;
+}
+
+buttons.innerHTML=`
+<button class="next" onclick="nextPage()">Next ❤️</button>
+`;
+
+}
+
+function nextPage(){
+
+if(current<pages.length-1){
+current++;
+showPage();
+}
+
+}
+
+function poopYes(){
+alert("😂 I knew it, Haguman!");
+}
+
+function poopNo(){
+alert("🚽 Go poop ASAP, you little goblin!");
+}
+
+function gayYes(){
+
+document.body.innerHTML=`
+
+<div class="container final">
+
+<h1>🎉 Gotcha Haguman! 🎉</h1>
+
+<p style="font-size:1.6rem;">
+
+💌<br><br>
+
+From: Preetu ❤️<br><br>
+
+To: Haguman 🐻<br><br>
+
+Thank you for tolerating my nonsense,
+my random moods,
+my terrible jokes,
+and my dramatic moments.<br><br>
+
+There may be millions of reasons to smile,
+but you're still my favourite one. ❤️<br><br>
+
+Yesterday I demanded nudes.<br>
+Today I'm asking for ur boobs again.<br>
+Tomorrow I'll probably ask for something and that will again be boobs. 😌<br><br>
+
+Too bad though...<br><br>
+
+You're stuck with me. ❤️
+
+</p>
+
+<br>
+
+<button onclick="hug()">🤗 Claim Your Compensation Hug</button>
+
+</div>
+
+`;
+
+}
+
+function hug(){
+
+alert("❤️ Haguman has been successfully hugged!");
+alert("✅ Anger level reduced to 0%");
+alert("😂 Preetu remains annoying as ever");
+
+}
+
+showPage();
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*window.innerWidth+"px";
+
+heart.style.fontSize=(20+Math.random()*20)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+}
+
+setInterval(createHeart,500);
+
+</script>
+
+</body>
+</html>
